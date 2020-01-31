@@ -54,4 +54,35 @@ class Solution(object):
         return ans.val
 
 
+'''
+Solution 2 DFS
+'''
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+
+        res = []
+        if root == None:
+            return res
+        path = []
+        self.DFS(root, path)
+        return path
+
+    def DFS(self, root, path):
+        if root is None:
+            return
+        self.DFS(root.left, path)
+        path.append(root.val)
+        self.DFS(root.right, path)
 
